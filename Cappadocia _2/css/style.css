@@ -1,0 +1,834 @@
+
+*,
+*:after,
+*:before{
+	box-sizing: border-box; /*весь контент поместится в контейнер, не будет выходить за рамки*/
+}
+/*подключим шрифты локально*/
+@font-face {
+	font-family: 'balqis'; /*название шрифта*/
+	src: url('../fonts/balqis.woff2') format('woff2'), /*путь к папке с шрифтами и самому шрифту*/
+	     url('../fonts/balqis.woff') format('woff'); /*путь к папке с шрифтами и самому шрифту*/
+	font-weight: 300;  /*жирность шрифта*/
+	font-style: normal;
+	font-display: swap; /*подгрузка других шрифтов, когда нет этого*/     
+}
+@font-face {
+	font-family: 'RobotoCondensed-Light'; /*название шрифта*/
+	src: url('../fonts/RobotoCondensed-Light.woff2') format('woff2'), /*путь к папке с шрифтами и самому шрифту*/
+	     url('../fonts/RobotoCondensed-Light.woff') format('woff'); /*путь к папке с шрифтами и самому шрифту*/
+	font-weight: 300;  /*жирность шрифта*/
+	font-style: normal;
+	font-display: swap; /*подгрузка других шрифтов, когда нет этого*/     
+}
+@font-face {
+	font-family: 'RobotoCondensed-LightItalic'; /*название шрифта*/
+	src: url('../fonts/RobotoCondensed-LightItalic.woff2') format('woff2'), /*путь к папке с шрифтами и самому шрифту*/
+	     url('../fonts/RobotoCondensed-LightItalic.woff') format('woff'); /*путь к папке с шрифтами и самому шрифту*/
+	font-weight: 300;  /*жирность шрифта*/
+	font-style: italic;
+	font-display: swap; /*подгрузка других шрифтов, когда нет этого*/     
+}
+@font-face {
+	font-family: 'RobotoCondensed-Regular'; /*название шрифта*/
+	src: url('../fonts/RobotoCondensed-Regular.woff2') format('woff2'), /*путь к папке с шрифтами и самому шрифту*/
+	     url('../fonts/RobotoCondensed-Regular.woff') format('woff'); /*путь к папке с шрифтами и самому шрифту*/
+	font-weight: 400;  /*жирность шрифта*/
+	font-style: normal;
+	font-display: swap; /*подгрузка других шрифтов, когда нет этого*/     
+}
+
+body {
+	color: #000; /*основной цвет текста сайта*/
+	font-family: 'RobotoCondensed-Light'; /*основной шрифт текста сайта*/
+	font-size: 18px; /*размер основного шрифта текста сайта*/
+	line-height: 21px; /*размер основного шрифта текста сайта*/
+}
+
+ul {
+	list-style: none; /*уберем все маркеры сразу у всех списков*/
+}
+
+a {
+	color: inherit; /*все ссылки будут наследовать цвет своего родителя, в ком они находятся*/
+	text-decoration: none; /*уберем линию подчеркивания ссылок*/
+}
+
+.container {
+	max-width: 1230px; /*для адаптации при более малых разрешениях экрана: меньше можно, больше нельзя*/
+	margin: 0 auto; /*автоматически сделаем максимум отступ справа и слева внутри контейнера*/
+	padding: 0 15px; /*отступы справа и слева внутри контейнера по 15рх*/
+}
+
+.page-section { /*это вторые классы почти всех секций сайта*/ /*зададим сразу всем секциям с этим классом отступы сверху и снизу, а по бокам - автоматически*/
+    margin: 200px auto; /*сделаем маржин,а не падинг, чтобы расстояние не накладывалось одно на другое */
+    max-width: 1920px; /*чтобы отцентровать сайт на огромных экранах и чтобы слайдер на огромных экранах не вылезал за пределы 1920рх*/
+}
+
+.title { /*зададим сразу всем заголовкам с этим классом стили*/
+	font-size: 96px;
+	line-height: 128px;
+	color: #E2AB3F;
+	font-family: 'balqis';
+	font-weight: 300;
+	margin-bottom: 100px;
+}
+
+.title span { /*зададим сразу всем заголовкам с этим классом и "span" стили*/
+     line-height: 28px;
+     font-size: 24px;
+     color: #000;
+     font-family: 'RobotoCondensed-LightItalic';
+     display: block; /*чтобы применялись все стили*/
+     margin-top: -30px;     
+}
+
+/*header*/
+
+.header {
+	background-image: url('../images/header-bg.jpg');
+	height: 100vh; /*зададим картинке фона высоту на весь экран*/
+	background-repeat: no-repeat; /*чтобы картинка не повторялась на больших экранах*/
+	background-size: cover; /*чтобы картинка вошла своим полным размером*/
+	background-position: center; /*отцентруем картинку*/
+	/*background-position: bottom center; еще можно отцентровать снизу и изображение поднимется снизу*/
+}
+
+.header__top { /*раскидаем дивы в одну строку*/
+	display: flex;
+	justify-content: space-between;
+	padding-top: 72px; /*сделаем отступ сверху внутри этого блока для его элементов*/
+	font-size: 24px; /*шрифт для ссылок меню и телефона*/
+	line-height: 28px; /*шрифт для ссылок меню и телефона*/
+	font-family: 'RobotoCondensed-Regular'; /*шрифт для ссылок меню*/
+}
+
+.menu__list-item {
+	display: inline-block; /*расположим составные списка меню(навигации) в одну строку*/
+	
+}
+
+.menu__list-item + .menu__list-item { /*сделаем отступ слева для всех ссылок менюб кроме первого*/
+	margin-left: 52px;
+}
+
+.menu__list-link:hover {
+	text-decoration: underline; /*появится линия под ссылкой при наведении на нее*/
+}
+
+.header__phone {
+	padding-left: 40px; /*зарезирвируем место под значек "телефона"*/
+	position: relative; /*спозиционируем значек "телефона"*/
+}
+
+.header__phone:before {
+	content: "";
+	position: absolute; /*спозиционируем значек "телефона" относительно его "родителя"*/
+	background-image: url('../images/phone-icon.svg'); /*вставим сам значек "телефона"*/
+	width: 30px; /*ширина значка "телефона"*/
+	height: 30px; /*высота значка "телефона"*/
+	left: 0; /*прижмем влево значек "телефона"*/
+}
+
+.header__title {
+	padding-top: 152px; /*сделаем внутренний сверху отступ для заголовка*/
+	text-align: center; /*разместим по центру заголовок по оси "х"*/
+	font-size: 250px; /*размер шрифта для заголовка*/
+	line-height: 334px; /*высота строки шрифта для заголовка*/
+	font-family: 'balqis'; /*шрифт для заголовка*/
+	font-weight: 300;
+}
+
+.header__title span {
+	display: block; /*сделаем "" блочным элементом, стобы легче им было управлять*/
+	text-align: right; /*прижмем текст вправо*/
+	font-size: 56px;
+    line-height: 66px;
+    font-family: 'RobotoCondensed-LightItalic';
+    margin-right: 85px; /*отступим справа 85рх*/
+    margin-top: -66px; /*поднимем вверх этот текст к заголовку*/
+}
+/*End header*/
+
+/*Section fairy-tail*/
+
+/*slider*/
+.fairy-tail__slider {
+    width: 50%; /*это свойство задаст слайдеру занимать только половину экрана*/
+}
+
+.slick-btn { /*классы для кнопок берем в файле "main.js"*/
+	position: absolute; /*спозиционируем кнопки слайдера относительно его родителя "fairy-tail__slider" - у него по умолчанию в "js" уже есть "position: absolute"*/
+	top: 50%; /*выставим кнопку по центру*/
+	transform: translateY(-50%); /*поднимем кнопку слайдера на половину ее высоты(самой кнопки) вверх, так как сойство "top: 50%" ставит кнопку эту не совсем по центру*/
+	cursor: pointer;
+	background-color: transparent; /*сделаем фон кнопок переключения сдайдера прозрачными*/
+	border: none; /*уберем бордер(границы) кнопок переключения слфйдера*/
+	outline: none; /*уберем бордер при нажатии на кнопки переключения слайдера*/
+}
+
+.slick-prev { /*разместим кнопки по разным краям*/
+	left: 0;
+	z-index: 5; /*чтобы кнопка проявилась по оси "z"*/
+}
+
+.slick-next { /*разместим кнопки по разным краям*/
+	right: 0;
+	z-index: 5; /*чтобы кнопка проявилась по оси "z"*/
+}
+/*end slider*/
+
+.fairy-tail__title span {
+	margin-left: 185px; /*отодвинем текс под заголовком, как в макете*/
+}
+
+.fairy-tail__inner {
+	position: relative; /*спозиционируем содержимое блока"fairy-tail__container" относительно слайдейра*/
+}
+
+.fairy-tail__container {  /*зададим контейнеру этого блока свойства основного контейнера "container" сайта*/
+    max-width: 1230px; /*для адаптации при более малых разрешениях экрана: меньше можно, больше нельзя*/
+	margin: 0 auto; /*автоматически сделаем максимум отступ справа и слева внутри контейнера*/
+	padding: 0 15px; /*отступы справа и слева внутри контейнера по 15рх*/
+	position: absolute; /*спозиционируем содержимое блока"fairy-tail__container" относительно слайдейра*/
+	top: 0; /*зададим местоположения содержимому этого блока*/
+	left: 0; /*зададим местоположения содержимому этого блока*/
+	right: 0; /*зададим местоположения содержимому этого блока*/
+	bottom: 0; /*зададим местоположения содержимому этого блока*/
+}
+
+.fairy-tail__body { /*зададим для "обертки всего текста стили"*/
+	width: 50%; /*зададим ширину этому блоку в 50% от ширины экрана*/
+	margin-left: auto; /*зададим свойство этому блоку свойство автоматически отступить от левой части экрана*/
+	padding-left: 55px; /*отступ от слайдера по макету*/
+	display: flex; /*подключим свойство флексов*/
+	flex-direction: column; /*зададим всему этому блоку выстроиться в колонну*/
+	justify-content: space-around; /*при включении свойства "flex-direction: column" свойство "justify-content: space-around" работает по горизонтали*/
+	height: 100%; /*зададим высоту в 100% для содержимого этого блока(его контейнера)-по высоте слайдера*/
+}
+
+.fairy-tail__body-title {
+	font-family: 'RobotoCondensed-Regular';
+}
+
+/*если зададть это свойство(можно зададть только параграфам), то в дальнейшем при объемном увеличении текста абзатцы не соприкаснутся*/
+.fairy-tail__text { 
+	padding: 10px 0;
+}
+
+/*End Section fairy-tail*/
+
+/*Section our-trip*/
+
+/*slider*/
+.our-trip__slider {
+	width: 50%; /*зададим слайдеру ширину в 50% от ширины экрана*/
+	margin-left: auto; /*сделаем слайдеру автоматический отступ слева от экрана*/
+}
+/*end slider*/
+
+.our-trip__title span {
+	margin-left: 240px; /*отодвинем текс под заголовком, как в макете*/
+}
+
+.our-trip__inner {
+	position: relative; /*спозиционируем содержимое блока"our-trip__container" относительно слайдейра*/
+}
+
+.our-trip__container {
+	position: absolute; /*спозиционируем содержимое блока"our-trip__container" относительно слайдейра*/
+	max-width: 1230px; /*для адаптации при более малых разрешениях экрана: меньше можно, больше нельзя*/
+	margin: 0 auto; /*автоматически сделаем максимум отступ справа и слева внутри контейнера*/
+	padding: 0 15px; /*отступы справа и слева внутри контейнера по 15рх*/
+	position: absolute; /*спозиционируем содержимое блока"fairy-tail__container" относительно слайдейра*/
+	top: 0; /*зададим местоположения содержимому этого блока*/
+	left: 0; /*зададим местоположения содержимому этого блока*/
+	right: 0; /*зададим местоположения содержимому этого блока*/
+	bottom: 0; /*зададим местоположения содержимому этого блока*/
+}
+
+.our-trip__content { /*зададим этому блоку и всему его содержимому ширину 50% от ширины экрана и отступ 55рх от блока со слайдером, чтобы при возможном увеличении текста он не налазил на слайдер*/
+	width: 50%;
+	padding-right: 55px;
+}
+
+.our-trip__body {  /*зададим для "обертки всего текста стили"*/
+	display: flex; /*подключим свойство флексов*/
+	flex-direction: column; /*зададим всему этому блоку выстроиться в колонну*/
+	justify-content: space-between; /*при включении свойства "flex-direction: column" свойство "justify-content: space-between" работает по горизонтали*/
+	align-items: flex-start; /*чтобы кнопка(ссылка) не растягивалась на весь экран*/
+	height: 100%; /*но без какого-либо значения высоты для этого блока "флексы"" не работают, поэтому зададим высоту в 100% для содержимого этого блока(его контейнера)-по высоте слайдера*/
+}
+
+.our-trip__list {
+	margin: 5px 0; /*чтобы текст "списка" не соприкасался друг с другом при возможно увеличении объема текста "списка"*/
+	font-size: 24px; /*размер шрифта текста "списка"*/
+	line-height: 28px;
+}
+
+.our-trip__list li:first-child { /*этим способом зададим первым "li" во всех "списках" сразу другой шрифт и отступ снизу*/
+	margin-bottom: 20px;
+	font-family: 'RobotoCondensed-Regular';
+}
+
+.our-trip__btn { /*зададим стили кнопке-ссылке*/
+	padding: 11px 54px;
+	border: 1px solid #E2AB3F;
+	/*width: 280px; /*или так можно сделать, чтобы кнопка(ссылка) не растягивалась на весь экран*/
+    height: 50px;
+    font-size: 24px;
+    line-height: 28px;
+    font-family: 'RobotoCondensed-Light';
+}
+
+/*End Section our-trip*/
+
+/*Section hotel*/
+
+.hotel-title span {
+	margin-left: 125px; /*отодвинем текс под заголовком, как в макете*/
+}
+
+.hotel__inner {
+	display: flex; /*включим флексы и расположим все "дивы" этого блока в одну строку*/
+}
+
+.hotel__images {
+	margin-right: 99px; /*сделаем отступ для содержимого всего блока от большой картинки справа, чтобы для блока от картинки справа была адаптивность*/
+}
+
+.hotel__text {
+	margin-bottom: 20px; /*сделаем отступ снизу от каждого "параграфа" с текстом*/
+}
+
+.hotel__gallery {
+	margin-top: 30px; /*отступ от блока картинок "галлереи" вверх*/
+	/*зададим картинкам свойство, чтобы они переносились, если места недостаточно*/
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.hotel__gallery a { /*отступ от самих картинок вверх*/
+	margin-top: 50px;
+}
+
+/*End Section hotel*/
+
+/*Section price*/
+
+.price__title span {
+	margin-left: 125px; /*отодвинем текс под заголовком, как в макете*/
+}
+
+.price__on-title,
+.price__off-title { /*зададим этим заголовкам стили и отступы*/
+	margin-bottom: 50px;
+	font-size: 24px;
+    line-height: 28px;
+    font-family: 'RobotoCondensed-Regular';
+}
+
+.price__inner {
+	display: flex; /*подключим флексы и выстроим содержимое этих блоков в одну линию*/
+}
+
+.price__on { /*зададим этой секции свойство занимать 530px и отступ от правого блока в 70рх*/
+	width: 530px;
+	margin-right: 70px;
+}
+
+.price__list-item { /*зададим стили тексту "списка"*/
+	font-size: 18px;
+    line-height: 21px;
+    font-family: 'RobotoCondensed-Light';
+    margin-bottom: 20px;
+}
+
+.price {
+	background-image: url(../images/price-bg.png); /*разместим картинку с шарами как фон в секции*/
+	background-repeat: no-repeat; /*отменим повторение картинок*/
+	background-position: center right 5%; /*определим место положения картинки на экране*/
+}
+
+/*End Section price*/
+
+/*Section contacts*/
+
+.contacts__inner {
+	display: flex; /*подключим флексы и выстроим содержимое этих блоков в одну линию*/
+	justify-content: space-between; /*раскидаем по краям экрана на равном расстоянии друг от друга*/
+	flex-wrap: wrap;	
+}
+
+.contacts__content {
+	text-align: center; /*спозиционируем все содержимое этого блока по центру на месте, которое они занимают по оси "y"*/
+	display: flex; /*подключим свойство флексов*/
+	flex-direction: column; /*зададим всему этому блоку выстроиться в колонну*/
+	justify-content: space-around; /*при включении свойства "flex-direction: column" свойство "justify-content: space-around" работает по горизонтали*/
+}
+
+.contacts__date, /*зададим стили цифрам-заголовкам этих блоков*/
+.contacts__price {
+	font-family: 'balqis';
+	font-size: 96px;
+    line-height: 100px; /*от высоты строки зависит расстояние до текста ниже, который находится в "span"*/
+    color: #E2AB3F;    
+}
+
+.contacts__date {
+	margin-bottom: 20px; /*отступ снизу от верхней цифры до нижней, как в макете*/
+}
+
+.contacts__price {
+	margin-left: 105px; /*отступим влево как в макете*/
+}
+
+.contacts__date span, /*зададим стили тексту под цифрами-заголовками этих блоков*/
+.contacts__price span {
+	display: block; /*чтобы строчный элемент "span" стал блочным и перешел на строку ниже, чем цифры-заголовки*/
+	font-size: 24px;
+    line-height: 28px;
+    color: #000;
+    font-family: 'RobotoCondensed-LightItalic';
+    margin-top: -10px; /*уберем отступ сверху от текста до цифр до значений в макете*/
+    margin-left: 205px; /*отступим влево как в макете*/
+}
+
+.contacts__form {
+	max-width: 383px; /*зададим блоку с формой запроса его максимальную ширину*/
+	margin: 0 auto; /*отцентрируем блок с формой запроса */
+}
+
+.contacts__form-title { /*зададим стили заголовку формы запроса*/
+	font-size: 24px;
+	line-height: 28px;
+	margin-bottom: 50px; /*отступ снизу до самой формы запроса*/
+	font-family: 'RobotoCondensed-Regular';
+}
+
+.contacts__form-input { /*зададим сразу двум формам запроса единые стили, так как они одинаковые*/
+    border: 1px solid #E2AB3F;
+    display: block; /*чтобы строчный элемент "span" стал блочным и перешел на строку ниже*/
+    margin-bottom: 20px; /*отступ снизу от форм запроса*/
+    height: 50px; /*высота самих форм запроса*/
+    width: 100%; /*зададим формам запроса ширину в 100% и ори займут ширину своего болка-родителя*/
+    padding: 0 31px; /*сделаем отступ внутри формы запроса для самого текста запроса справа и слева по 31рх (для "placeholder")*/
+    /*зададим стили для текста внутри формы*/
+    line-height: 21px;
+    font-size: 18px;
+    font-weight: 300;
+    font-family: 'RobotoCondensed-Light';
+}
+
+.contacts__form-input::placeholder { /*зададим цвет тексту, что написан в форме запроса в самом "placeholder"*/
+	color: #000;
+}
+
+.contacts__form-btn { /*зададим стили тексту в кнопке и ей самой*/
+	font-family: 'RobotoCondensed-Light';
+	font-size: 24px;
+	line-height: 28px;
+	text-transform: uppercase; /*все буквы заглавные*/
+	/*стилизуем саму кнопку*/
+	border: 1px solid #E2AB3F;
+	background-color: transparent; /*фон кнопки прозрачный*/
+	padding: 11px 45px; /*отступы от текста кнопки: сверху и снизу по 11рх, по бокам 45рх*/
+	cursor: pointer;
+}
+
+ .contacts__images{    	
+    	object-fit: cover;
+    }
+
+/*End Section contacts*/
+
+/*Footer*/
+
+.footer {
+	background-image: url(../images/footer-bg.jpg); /*основная картинка футера*/
+	height: 100vh; /*высота картинки футера на весь экран*/
+	background-repeat: no-repeat;
+	background-position: bottom center; /*позиционируем картинку футера внизу и по центру для приоритета адаптации*/
+	padding-top: 96px; /*зададим внутренний отступ сверху для футера*/
+	background-size: cover; /*зададим рисунку фона свойство принимать адаптивность к меняющейся ширине экрана*/
+}
+
+.footer__inner {
+	display: flex; /*расположим все содержимое этого блока в одну строку*/
+	justify-content: space-between; /*расположим их на равном расстоянии друг от друга и от краев*/
+	align-items: center; /*отцентрируем все содержимое по оси "y"*/	
+	flex-wrap: wrap;
+}
+
+.footer__text {
+	font-size: 86px;
+	line-height: 115px;
+	font-family: 'balqis';
+	/*margin-top: -480px; текст при желании можно поднять вверх*/
+}
+
+.footer__contacts {
+	width: 356px; /*зададим размеры для фоновой картинки и для этого блока*/
+	height: 527px; /*зададим размеры для фоновой картинки и для этого блока*/
+	background-image: url(../images/footer-contact-bg.png); /*сделаем фоновую картинку для этого блока*/
+	background-repeat: no-repeat;
+	text-align: center; /*отцентруем всех по оси "y"*/
+	background-size: cover; /*чтобы картинка всегда тянулась при изменении ширины экрана*/
+	padding-top: 50px; /*отступ сверху внутри фоновой картинки для всех элементов*/
+}
+
+.footer__contacts-title { /*стилизуем заголовок этого длока*/
+	font-size: 86px;
+	line-height: 115px;
+	font-family: 'balqis';
+	color: #E2AB3F;
+	margin-bottom: 50px;
+}
+
+.footer__phone,
+.footer__email {
+	display: inline-block;/*чтобы применилось свойство, указанное ниже*/
+	padding-left: 40px; /*зарезервируем место под значки-иконки*/
+	position: relative; /*зададим позиционирование значкам-иконкам*/
+}
+
+.footer__phone {
+	display: inline-block;/*чтобы применилось свойство, указанное ниже*/
+	margin-bottom: 20px; /*отступ снизу от этого элемента*/
+}
+
+.footer__phone:before {
+	content: ""; /*разместим значки-иконки*/
+	position: absolute; /*спозиционируем значки-иконки*/
+	width: 30px; /*размер значков-иконок*/
+	height: 30px; /*размер значков-иконок*/
+	left: 0; /*прижмем значки-иконки влево*/
+	background-image: url(../images/footer-phone-icon.svg); /*укажем сам рисунок значка-иконки*/
+	/*немного поднимем вверх значки-иконки*/
+	top: -5px;
+	/*transform: translateY(-20%); можно сделать и так; немного поднимем вверх значки-иконки*/
+} 
+
+.footer__email:before {
+	content: ""; /*разместим значки-иконки*/
+	position: absolute; /*спозиционируем значки-иконки*/
+	width: 30px; /*размер значков-иконок*/
+	height: 30px; /*размер значков-иконок*/
+	left: 0; /*прижмем значки-иконки влево*/
+	background-image: url(../images/footer-email-icon.svg); /*укажем сам рисунок значка-иконки*/
+	/*немного поднимем вверх значки-иконки*/
+	top: -5px;
+	/*transform: translateY(-20%); можно сделать и так; немного поднимем вверх значки-иконки*/
+} 
+
+.footer__social {
+	margin-top: 30px; /*отступ от блока ссылок "социальных сетей"*/
+}
+
+.footer__social a {
+	margin: 0 7px; /*отступ справа и слева по 7рх между самими ссылками*/
+}
+
+/*End Footer*/
+
+
+/*@media*/
+
+/*Header @media*/
+
+@media (max-width: 1240px) {	
+    .header__title{ /*для этого разрешения экрана изменим(уменьшим) заголовок*/
+    	padding-top: 120px;
+    	font-size: 180px;
+    	line-height: 220px;
+    }
+    .header__title span{ /*для этого разрешения экрана изменим(уменьшим) текст под заголовком*/
+    	font-size: 50px;
+    	margin-top: -50px;
+    }
+}
+@media (max-width: 840px) {	
+    .header__title{ /*для этого разрешения экрана изменим(уменьшим) заголовок*/
+    	padding-top: 100px;
+    	font-size: 120px;
+    	line-height: 150px;
+    }
+    .header__title span{ /*для этого разрешения экрана изменим(уменьшим) текст под заголовком*/
+    	font-size: 30px;
+    	margin-top: -44px;
+    }
+    .header__top{ /*изменим меню для этого разрешения экрана*/
+    	font-size: 20px;
+    	line-height: 24px;
+    }
+    .header__phone:before { /*изменим значок телефона при этом разрешении экрана*/    
+        width: 25px;
+        height: 25px;
+        background-size: cover; /*это значение позволит этому значку тянуться при изменении ширины экрана*/
+    }    
+}
+@media (max-width: 600px) {	
+	.header__top{
+		justify-content: center; /*расположим все содоржимое по центру*/
+		flex-wrap: wrap; /*добавим свойство переноситься элементам на другую строку при нехватке места, когда экран уменьшается*/
+	}
+	.menu{
+		width: 100%; /*зададим меню ширину в 100% при этом разрешении экрана*/
+		text-align: center; /*расположим меню по ценру по оси "y"*/
+		margin: 0 0 25px; /*сделаем отступ от меню снизу 25рх*/
+	}
+	.header__title{ /*для этого разрешения экрана изменим(уменьшим) заголовок*/    	
+    	font-size: 80px;
+    	line-height: 120px;
+    }
+    .header__title span{ /*для этого разрешения экрана изменим(уменьшим) текст под заголовком*/
+    	font-size: 22px;
+    	margin-top: -46px;
+    	margin-right: 15px;
+    }   
+}
+
+@media (max-width: 370px) {   	
+	.header__title{ /*для этого разрешения экрана изменим(уменьшим) заголовок*/    	
+    	font-size: 60px;
+    	line-height: 100px;
+    }
+    .header__title span{ /*для этого разрешения экрана изменим(уменьшим) текст под заголовком*/
+    	font-size: 18px;    	
+    	margin-right: 0px;
+    }
+    .menu__list-item + .menu__list-item{ /*уменьшим расстояние между текстом меню*/
+    	margin-left: 18px;
+    }    
+}
+
+ /*End Header @media*/
+
+/*Section fairy-tail @media*/
+
+@media (max-width: 991px) {
+     .page-section { /*уменьшим отступы сверху и снизу для секций с этим классом при этом разрешении экрана*/
+        margin: 100px 0;    
+     }
+     .fairy-tail__container{
+        position: static; /*отменим заданное ранее позиционирование этому блоку и все элементы сместятся*/
+
+     }
+     .fairy-tail__slider{ 
+     	width: 100%; /*растянем слайдер на 100% экрана*/
+     }
+     .fairy-tail__body{
+     	width: 100%; /*растянем на 100% экрана*/
+     	padding-left: 0; /*отменим заданный ранее отступ слева*/     	
+     } 
+    /* .fairy-tail__text{
+     	margin-top: 20px;
+     } 
+     .fairy-tail__body-title{
+     	margin: 20px 0 20px;
+     }*/ 
+}
+
+@media (max-width: 600px) {
+	/*кнопки для управления слайдером при этом разрешении экрана уберем в файле "main.js"*/
+	.fairy-tail__item img{
+        height: 50vh; /*зададим картинке слайдера высоту 50% от высоты экрана при этом разрешении экрана*/
+        width: 100%;
+        object-fit: cover; /*картинка подстроится размером под размер экрана*/
+	}
+    .page-section { /*уменьшим отступы сверху и снизу для секций с этим классом при этом разрешении экрана*/
+        margin: 50px 0;    
+     }
+     .title { /*зададим сразу всем заголовкам сайта стили при этом размере экрана*/
+     	margin-bottom: 25px; /*уменьшим отступ снизу от всех заголовков сайта при этом размере экрана*/
+     	font-size: 60px;
+     	line-height: 110px;
+     }
+     .fairy-tail__title span{
+     	margin-left: 110px; /*немного сдвинем текст под заголовком*/
+     } 
+}
+@media (max-width: 370px) {
+	.title{ /*зададим сразу всем заголовкам стили при этом размере экрана*/
+		font-size: 50px;
+	}
+	.title span{
+		font-size: 20px;
+	}
+	.fairy-tail__title span{
+     	margin-left: 90px; /*немного сдвинем текст под заголовком*/
+     } 
+}
+
+/*End Section fairy-tail @media*/
+
+/*Section our-trip @media*/
+
+@media (max-width: 991px) {    
+     .our-trip__container{
+         position: static; /*отменим заданное ранее позиционирование этому блоку и все элементы сместятся*/
+     }
+     .our-trip__slider{
+     	width: 100%; /*растянем слайдер на 100% экрана*/
+     }
+     .our-trip__content{
+     	width: 100%; 
+     	padding-right: 0;    	
+     }
+     .our-trip__body{
+     	width: 100%; /*растянем на 100% экрана*/
+     	padding-right: 0;
+     	text-align: center; /*разместим по центру по оси "х"*/
+     	justify-content: center;
+     	align-items: center;
+     }
+}
+@media (max-width: 600px) {
+	/*кнопки для управления слайдером при этом разрешении экрана уберем в файле "main.js"*/
+	.our-trip__slider-item img{
+		 height: 50vh; /*зададим картинке слайдера высоту 50% от высоты экрана при этом разрешении экрана*/
+		 width: 100%;
+		 object-fit: cover; /*картинка подстроится размером под размер экрана*/
+	}
+	.our-trip__body{     	
+     	margin-left: 0;
+     }
+     .our-trip__title span{
+     	margin-left: 110px; /*немного сдвинем текст под заголовком*/
+     } 
+}
+
+/*End Section our-trip @media*/
+
+/*Section hotel @media*/
+
+@media (max-width: 992px) {
+	.hotel__inner {
+	   display: block; /*выключим флексы и расположим все "дивы" этого блока в одну колонку*/
+    }
+    .hotel__images {
+    	width: 100%;
+    	object-fit: cover; /*картинка подстроится размером под размер экрана*/
+	    margin-right: 0; /*сделаем отступ для содержимого всего блока от большой картинки справа, чтобы для блока от картинки справа была адаптивность-обнулим*/
+    }
+    .hotel__text{
+    	margin-top: 20px;
+    } 
+    .hotel__gallery{
+    	display: block;
+    	text-align: center;
+    }
+}
+@media (max-width: 600px) {
+	.hotel-title span{
+     	margin-left: 90px; /*немного сдвинем текст под заголовком*/
+     } 
+}
+
+/*End Section hotel @media*/
+
+/*Section price @media*/
+
+@media (max-width: 992px) {
+	.price{
+		background-position: center center;
+	} 
+	.price__inner {
+	    display: block; /*отключим флексы и выстроим содержимое этих блоков в одну колонку*/	    
+    }
+     .contacts__content{
+    	margin: 0 auto;
+    }
+    .price__on { /*зададим этой секции свойство занимать 100%*/
+	   width: 100%;
+    }
+}
+@media (max-width: 600px) {
+	.price__title span {
+	   margin-left: 90px; /*отодвинем текс под заголовком, как в макете*/
+    }
+}
+
+/*End Section price @media*/
+
+/*Section contacts @media*/
+
+@media (max-width: 1100px) {
+	.contacts__inner {
+	   flex-wrap: wrap;	  	   
+    }
+    .contacts__images{
+    	margin-top: 20px;
+    	width: 100%;
+    	object-fit: cover;
+    }
+    .contacts__content{
+    	margin: 0 auto;
+    } 
+}
+@media (max-width: 600px) {
+	.contacts__date,
+	.contacts__price { /*зададим сразу всем заголовкам сайта стили при этом размере экрана*/
+     	margin-bottom: 10px; /*уменьшим отступ снизу от всех заголовков сайта при этом размере экрана*/
+     	font-size: 60px;
+     	line-height: 90px;
+    }
+     .contacts__date span,
+     .contacts__price span{
+     	margin-left: 110px; /*немного сдвинем текст под заголовком*/
+     	font-size: 18px;
+     	margin-top: -15px;
+    } 
+    .contacts__content{
+    	margin: 0 auto;
+    }
+    .contacts__form {
+	    max-width: 310px;	    	     
+	}    
+}
+
+/*End Section contacts @media*/
+
+/*Footer @media*/
+
+@media (max-width: 1200px) {	
+    .footer__contacts-title { /*стилизуем заголовок этого длока*/
+	    font-size: 56px;
+	    line-height: 85px;
+	}
+	.footer__text {
+	    font-size: 56px;
+	    line-height: 85px;
+    }
+}
+@media (max-width: 780px) {
+	.footer__contacts {
+	   width: 290px; /*зададим размеры для фоновой картинки и для этого блока*/
+	   height: 427px; /*зададим размеры для фоновой картинки и для этого блока*/
+    }
+    .footer__contacts-title{
+    	margin-bottom: 20px;
+    }
+    .footer__phone,
+    .footer__email{
+    	font-size: 15px;
+	    line-height: 18px; 
+    }
+}
+@media (max-width: 700px) {
+	.footer__inner{
+		justify-content: center;
+	}
+	.footer{
+		padding-top: 56px;
+	}
+}
+@media (max-width: 420px) {
+	.footer__text {
+	    font-size: 40px;
+	    line-height: 70px;
+    }
+}
+
+/*End Footer @media*/
